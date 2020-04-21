@@ -35,29 +35,38 @@
 #   <http://www.gnu.org/licenses/>.
 #
 # ========================================================================================
-# ========================================================================================
-#
-# ========================================================================================
-#
+#	
 # cloned from https://github.com/delfer/docker-alpine-ftp-server.git
 #
+# ========================================================================================
+# ========================================================================================
 
-FROM ewsdocker/alpine-base:3.10.0
+ARG FROM_REPO="ewsdocker"
+ARG FROM_NAME="alpine-base"
+ARG FROM_VERSION="3.10.0"
+
+FROM "${FROM_REPO}/${FROM_NAME}:${FROM_VERSION}"
+
+ARG FROM_VERSION
+ARG FROM_NAME 
+ARG FROM_REPO
+ARG FROM_REGISTRY
+
+ARG BUILD_VERSION
+ARG BUILD_NAME 
+ARG BUILD_REPO
+ARG BUILD_REGISTRY
 
 # =========================================================================
-
-ENV LMS_BASE="/usr/local"
-
 # =========================================================================
 
-ENV LMSBUILD_VERSION="3.10.0"
-ENV LMSBUILD_NAME="alpine-ftp-server" 
-ENV LMSBUILD_REPO=ewsdocker
-ENV LMSBUILD_REGISTRY=""
+ENV LMSBUILD_VERSION=${BUILD_VERSION:-"3.10.0"} \
+    LMSBUILD_NAME=${BUILD_NAME:-"alpine-ftp-server"} \ 
+    LMSBUILD_REPO=${BUILD_REPO:-"ewsdocker"} \
+    LMSBUILD_REGISTRY=${BUILD_REGISTRY:-""}
 
-ENV LMSBUILD_DOCKER="${LMSBUILD_REPO}/${LMSBUILD_NAME}:${LMSBUILD_VERSION}" 
-ENV LMSBUILD_PACKAGE="ewsdocker/alpine-base:3.10.0"
-ENV LMSBUILD_BASE="nimmis/alpine-micro:3.10"
+ENV LMSBUILD_DOCKER="${LMSBUILD_REPO}/${LMSBUILD_NAME}:${LMSBUILD_VERSION}" \
+    LMSBUILD_PACKAGE="${FROM_REPO}/${FROM_NAME}:${FROM_VERSION}" 
 
 # =========================================================================
 
@@ -67,7 +76,7 @@ COPY scripts/. /
 
 RUN apk update \
  && apk upgrade \
- && add vsftpd \
+ && apk add vsftpd \
  && rm -rf /var/cache/apk/* \
  && chmod -R 775 /bin \
  && printf "${LMSBUILD_DOCKER} (${LMSBUILD_PACKAGE}), %s @ %s\n" `date '+%Y-%m-%d'` `date '+%H:%M:%S'` >> /etc/ewsdocker-builds.txt
@@ -79,5 +88,4 @@ VOLUME /ftp/ftp
 
 # =========================================================================
 
-ENTRYPOINT ["/bin/start_vsftpd.sh"]
-
+ENTRYPOINT ["/usr/bin/start_vsftpd.sh"]
