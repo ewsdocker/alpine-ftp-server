@@ -1,4 +1,4 @@
-# alpine-ftp-server
+# ewsdocker/alpine-ftp-server
 
 
 ## Usage
