@@ -2,36 +2,36 @@
 # ========================================================================================
 #
 #    Dockerfile
-#      Dockerfile for alpine-nginx-client container.
+#      Dockerfile for alpine-ftp-server container.
 #
 # ========================================================================================
 #
 # @author Jay Wheeler.
 # @version 3.10.0
-# @copyright © 2018, 2020. EarthWalk Software.
+# @copyright © 2020. EarthWalk Software.
 # @license Licensed under the GNU General Public License, GPL-3.0-or-later.
-# @package alpine-nginx-client
+# @package alpine-ftp-server
 # @subpackage Dockerfile
 #
 # ========================================================================================
 #
-#	Copyright © 2018, 2020. EarthWalk Software
+#	Copyright © 2020. EarthWalk Software
 #	Licensed under the GNU General Public License, GPL-3.0-or-later.
 #
-#   This file is part of ewsdocker/alpine-nginx-client.
+#   This file is part of ewsdocker/alpine-ftp-server.
 #
-#   ewsdocker/alpine-nginx-client is free software: you can redistribute 
+#   ewsdocker/alpine-ftp-server is free software: you can redistribute 
 #   it and/or modify it under the terms of the GNU General Public License 
 #   as published by the Free Software Foundation, either version 3 of the 
 #   License, or (at your option) any later version.
 #
-#   ewsdocker/alpine-nginx-client is distributed in the hope that it will 
+#   ewsdocker/alpine-ftp-server is distributed in the hope that it will 
 #   be useful, but WITHOUT ANY WARRANTY; without even the implied warranty 
 #   of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #   GNU General Public License for more details.
 #
 #   You should have received a copy of the GNU General Public License
-#   along with ewsdocker/alpine-nginx-client.  If not, see 
+#   along with ewsdocker/alpine-ftp-server.  If not, see 
 #   <http://www.gnu.org/licenses/>.
 #
 # ========================================================================================
@@ -51,7 +51,7 @@ ENV LMS_BASE="/usr/local"
 # =========================================================================
 
 ENV LMSBUILD_VERSION="3.10.0"
-ENV LMSBUILD_NAME="alpine-nginx-client" 
+ENV LMSBUILD_NAME="alpine-ftp-server" 
 ENV LMSBUILD_REPO=ewsdocker
 ENV LMSBUILD_REGISTRY=""
 
